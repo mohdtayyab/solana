@@ -35,4 +35,5 @@ git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_n
 echo "origin"
 git fetch origin
 git add .
+git rm --cached .github_export/"$repo_name"
 git -C .github_export/"$repo_name" push https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
