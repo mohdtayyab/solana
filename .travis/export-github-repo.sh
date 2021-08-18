@@ -35,7 +35,7 @@ git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_n
 echo "origin"
 #git fetch origin master:tmp
 #git rebase tmp
-git fetch origin master
+git fetch origin 
 git config pull.rebase false  
 git config pull.rebase true   
 git config pull.ff only  
