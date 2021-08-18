@@ -33,5 +33,5 @@ git clone https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_exp
 git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_name"
 echo "origin"
 git fetch origin
-git merge origin master
+
 git -C .github_export/"$repo_name" push https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
