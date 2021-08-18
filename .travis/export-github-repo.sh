@@ -31,19 +31,16 @@ set -x
 rm -rf .github_export/"$repo_name"
 git clone https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_export/"$repo_name"
 git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_name"
+git fetch origin master
+git remote set-url origin .github_export/"$repo_name"
+git fetch origin master
 git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 git config --global user.email "mohdtayyabali1998@gmail.com"
 git config --global user.name "Tayyab"
 echo "origin"
-#git fetch origin master:tmp
-#git rebase tmp
-
-git fetch origin master
 git config pull.rebase false  
 git config pull.rebase true   
-git config pull.ff only  
-# git pull origin master
-
+git config pull.ff only
 git pull origin master --allow-unrelated-histories 
 #git merge origin origin/master
 git submodule add https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_export/solana-web3.js
