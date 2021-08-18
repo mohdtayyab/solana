@@ -36,7 +36,7 @@ echo "origin"
 #git fetch origin master:tmp
 #git rebase tmp
 git fetch origin master
-git pull origin master  
+git pull origin master --allow-unrelated-histories 
 #git merge origin master
 #git add .
 # git rm --cached .github_export/"$repo_name"
