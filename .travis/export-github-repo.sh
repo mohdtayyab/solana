@@ -31,9 +31,9 @@ set -x
 rm -rf .github_export/"$repo_name"
 git clone https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_export/"$repo_name"
 git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_name"
-
+git remote set-url origin .github_export/"$repo_name"
 echo "origin"
 git fetch origin
-git add .
-git rm --cached .github_export/"$repo_name"
+# git add .
+# git rm --cached .github_export/"$repo_name"
 git -C .github_export/"$repo_name" push https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
