@@ -1,3 +1,14 @@
+name : minimal 
+
+on:
+  push:
+    branches:  [master]
+    tags: /^v\d+\.\d+/
+  pull_request:
+    branches:  [master]
+    tags:  /^v\d+\.\d+/ 
+
+
 jobs:
   export_github:
     runs-on: ubuntu-latest
