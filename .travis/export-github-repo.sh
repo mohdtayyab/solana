@@ -36,6 +36,7 @@ git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_n
 git pull origin master --rebase
 git fetch 
 git merge
+git add --all
 
 
 
