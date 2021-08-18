@@ -41,7 +41,7 @@ git config pull.rebase true
 git config pull.ff only  
 git pull origin master
 #git pull origin master --allow-unrelated-histories 
-git merge origin origin/master
-#git add .
+#git merge origin origin/master
+git add .
 # git rm --cached .github_export/"$repo_name"
 git -C .github_export/"$repo_name" push https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
