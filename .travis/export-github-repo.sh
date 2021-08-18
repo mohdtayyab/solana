@@ -32,8 +32,10 @@ rm -rf .github_export/"$repo_name"
 git clone https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_export/"$repo_name"
 git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_name"
 
-git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
+git fetch 
+#git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 git pull origin master --rebase
+git pull https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" master
 git fetch 
 git merge
 git add --all
