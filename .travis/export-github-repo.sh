@@ -33,7 +33,7 @@ git clone https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_exp
 git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_name"
 
 git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
-git pull 
+git pull origin master --rebase
 git fetch origin
 
 
