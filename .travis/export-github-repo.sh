@@ -36,7 +36,8 @@ git fetch
 #git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 git pull origin master 
 # git pull https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
-git pull https://github.com/mohdtayyab/solana-web3.js.git
+git pull https://github.com/mohdtayyab/solana-web3.js.git --ff-only
+#git pull https://github.com/mohdtayyab/solana-web3.js.git
 git fetch 
 git merge
 git add --all
