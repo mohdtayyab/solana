@@ -35,7 +35,7 @@ git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_n
 echo "origin"
 git fetch origin master
 #git pull origin master --allow-unrelated-histories 
-git merge origin master
-git add .
+#git merge origin master
+#git add .
 # git rm --cached .github_export/"$repo_name"
 git -C .github_export/"$repo_name" push https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
