@@ -34,7 +34,7 @@ git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_n
 git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 echo "origin"
 git fetch origin master
-git pull origin master
+git pull origin master --allow-unrelated-histories 
 # git merge origin master
 git add .
 # git rm --cached .github_export/"$repo_name"
