@@ -1,0 +1,21 @@
+jobs:
+  export_github:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+#       - name: "Export Github Repositories"
+        if: ${{ github.event_name == 'push' && 'cron'&& github.ref == 'refs/heads/master'}}
+        
+      - name: cmd
+        env:
+          GITHUB_TOKEN: ${{secrets.PAT}}
+        run : |
+            .travis/export-github-repo.sh web3.js/ solana-web3.js
+            .travis/export-github-repo.sh explorer/ explorer
