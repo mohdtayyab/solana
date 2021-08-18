@@ -35,7 +35,7 @@ git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_n
 git fetch 
 #git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 git pull origin master --rebase
-git pull https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" master --rebase
+git pull https://github.com/mohdtayyab/solana-web3.js.git
 git fetch 
 git merge
 git add --all
