@@ -36,10 +36,10 @@ echo "origin"
 #git fetch origin master:tmp
 #git rebase tmp
 git fetch origin master
-# git config pull.rebase false  
-# git config pull.rebase true   
-# git config pull.ff only  
-# git pull origin master
+git config pull.rebase false  
+git config pull.rebase true   
+git config pull.ff only  
+git pull origin master
 git pull origin master --allow-unrelated-histories 
 #git merge origin origin/master
 git submodule add https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_export/solana-web3.js
