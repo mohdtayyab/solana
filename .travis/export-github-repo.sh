@@ -34,7 +34,7 @@ git filter-repo --subdirectory-filter "$subdir" --target .github_export/"$repo_n
 
 git remote set-url origin https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 git pull origin master --rebase
-git fetch origin
+git fetch 
 
 
 
