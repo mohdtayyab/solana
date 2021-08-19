@@ -51,4 +51,4 @@ git fetch
 
 
 
-git -C .github_export/"$repo_name" push https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
+git -C .github_export/"$repo_name" push --force https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
