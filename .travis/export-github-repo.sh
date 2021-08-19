@@ -39,6 +39,7 @@ git fetch
 git pull origin master
 git merge
 git checkout master
+git remote -v
 #git submodule add https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name" .github_export/solana-web3.js
 # git pull https://"$GITHUB_TOKEN"@github.com/mohdtayyab/"$repo_name"
 #git pull https://github.com/mohdtayyab/solana-web3.js.git --no-ff --allow-unrelated-histories
