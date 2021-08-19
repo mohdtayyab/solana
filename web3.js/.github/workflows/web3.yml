@@ -1,0 +1,70 @@
+name: node_js
+on:
+  push:
+    branches: [master]
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches: [master]
+    
+jobs:
+  build:
+    name: test & build
+    
+    runs-on: ubuntu-18.04
+    outputs:
+      git_tag_name: ${{ steps.tag_check.outputs.git_tag_name }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Use Node.js lts/*
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+      - run: |
+          source .travis/before_install.sh
+          npm ci
+          source .travis/script.sh
+#       - uses: nelonoel/branch-name@v1
+      - name: before deploy
+        run: |
+          git tag --list
+          rm -rf deploy
+          mkdir -p deploy
+          cp -r doc deploy/solanaWeb3Api-${BRANCH_NAME}
+          ls -l lib
+          cp lib/index.iife.js deploy/solanaWeb3.min.js
+          ( cd deploy; tar zcf solanaWeb3Api.tgz solanaWeb3Api-${BRANCH_NAME})
+          
+      - name: Deploy on pages
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: doc
+#       - name: deploy on scripts
+#         if: ${{ github.ref == 'refs/heads/master' }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#         run: |
+#           npx semantic-release
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            deploy/solanaWeb3.min.js
+            deploy/solanaWeb3Api.tgz
+          token: ${{ secrets.GITHUB_TOKEN }}
+#          tag_name: 'V1.23.2'
+          draft: false
+          prerelease: false
+          name: 'V1.23.2'
